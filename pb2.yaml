@@ -6,19 +6,19 @@
 
   tasks:
   - name: Update the machine
-    command: sudo apt-get update -y
+    command: apt-get update -y
 
   - name: Installing docker
     command: apt install docker.io -y
 
   - name: Adding user to group
-    command: sudo usermod -aG docker ${USER}
+    command: usermod -aG docker ${USER}
 
   - name: Changing permission
-    command: sudo chmod 666 /var/run/docker.sock
+    command: chmod 666 /var/run/docker.sock
 
   - name: Modify User Account
-    command: sudo usermod -G root $USER
+    command: usermod -G root $USER
   
   - name: Docker Run
     command: docker run -d -p 8080:8080 ziwei0/awsdevops
