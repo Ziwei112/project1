@@ -34,4 +34,21 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>ansible.cfg</name>
+			<type>1</type>
+			<location>E:/Downloads/AWS Training/Workspace/app2/ansible.cfg</location>
+		</link>
+		<link>
+			<name>pb1.yaml</name>
+			<type>1</type>
+			<location>E:/Downloads/AWS Training/Workspace/app2/pb1.yaml</location>
+		</link>
+		<link>
+			<name>pb2.yaml</name>
+			<type>1</type>
+			<location>E:/Downloads/AWS Training/Workspace/app2/pb2.yaml</location>
+		</link>
+	</linkedResources>
 </projectDescription>
