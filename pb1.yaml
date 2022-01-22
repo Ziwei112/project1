@@ -22,11 +22,11 @@
     
   - name: Wait for system to become reachable
     wait_for:
-	  port: 22
-	  host: '{{ ec2.instances[0].public_ip }}'
-	  search_regex: OpenSSH
-	  delay: 10
-    
+      port: 22
+      host: '{{ ec2.instances[0].public_ip }}'
+      search_regex: OpenSSH
+      delay: 10
+
   - name: Creating the EC2 group
     shell: echo [ec2] > host
 
