@@ -16,7 +16,7 @@
       vpc_subnet_id: subnet-07d25414f7796c6b5
       assign_public_ip: yes
       instance_tags:
-        name: DeployServer
+        Name: DeployServer
         os: ubuntu
     register: ec2
 
