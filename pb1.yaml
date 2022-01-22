@@ -19,7 +19,10 @@
         Name: DeployServer
         os: ubuntu
     register: ec2
-
+    
+  - name: Wait for system to become reachable
+    wait_for_connection:
+    
   - name: Creating the EC2 group
     shell: echo [ec2] > host
 
