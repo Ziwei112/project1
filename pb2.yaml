@@ -21,4 +21,4 @@
     command: usermod -G root $USER
   
   - name: Docker Run
-    command: docker run -d -p 8080:8080 ziwei0/awsdevops
+    command: docker run -d -p 8080:8080 --name con ziwei0/awsdevops
