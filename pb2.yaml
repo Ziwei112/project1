@@ -9,7 +9,7 @@
     command: apt update
 
   - name: Installing docker
-    command: apt install docker.io -y
+    command: apt install docker* -y
 
   - name: Adding user to group
     command: usermod -aG docker ${USER}
