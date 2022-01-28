@@ -1,9 +1,11 @@
 #!/bin/bash
 
-if aws ec2 describe-tags --region ap-southeast-1 --filters Name=resource-type,Values=instance Name=value,Values=Deploy | grep Deploy; then
-    Id=$(aws ec2 describe-tags --region ap-southeast-1 --filters Name=key,Values=Name Name=value,Values=Deploy --query 'Tags[*].ResourceId' --output text)
-    Ip=$(aws ec2 describe-instances --region ap-southeast-1 --query 'Reservations[*].Instances[*].PublicIpAddress' --instance-ids $Id --output text)
+IP=$(aws ec2 describe-instances --region ap-southeast-1 --query 'Reservations[*].Instances[*].PublicIpAddress' --filters Name=tag:Name,Values=Deploy --output text)
+
+if ! [ -z $IP ];
+then
+    ssh -i ~/.ssh/sg-key.pem ubuntu@$IP bash < replace-container.sh
 else
     ansible-playbook pb1.yaml -v
-    ansible-playbook -i host pb2.yaml --private-key ~/.ssh/key.pem
+    ansible-playbook -i host pb2.yaml --private-key ~/.ssh/sg-key.pem -v
 fi
