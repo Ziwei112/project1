@@ -6,7 +6,7 @@
 
   tasks:
   - name: Update the machine
-    command: apt-get update -y
+    command: apt update
 
   - name: Installing docker
     command: apt install docker.io -y
