@@ -13,7 +13,7 @@
       wait: yes
       group: default
       count: 1
-      vpc_subnet_id: subnet-07d25414f7796c6b5
+      vpc_subnet_id: subnet-0a8fe73c06936d705
       assign_public_ip: yes
       instance_tags:
         Name: DeployServer
