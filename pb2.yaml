@@ -5,39 +5,34 @@
   become: true
 
   tasks:
-  - name: installa dependency
-    apt: 
-      name: "{{item}}"
-      state: present
-      update_cache: yes
-    loop:
-      - apt-transport-https
-      - ca-certificates
-      - curl
-      - gnupg-agent
-      - software-properties-common
-  - name: add GPG key
-    apt_key:
-      url: https://download.docker.com/linux/ubuntu/gpg
-      state: present
-  - name: add docker repository to apt
-    apt_repository:
-      repo: deb https://download.docker.com/linux/ubuntu bionic stable
-      state: present
-  - name: install docker
-    apt:
-      name: "{{item}}"
-      state: latest
-      update_cache: yes
-    loop:
-      - docker-ce
-      - docker-ce-cli
-      - containerd.io
-  - name: assicurati che docker sia attivo
-    service:
-      name: docker
-      state: started
-      enabled: yes
+  - name: Update the machine
+    command: apt update
 
+  - name: Installing docker
+    command: apt install docker* -y
+
+  - name: Adding user to group
+    command: usermod -aG docker ${USER}
+
+#  - name: adding existing user '{{ user }}' to group docker and sudo
+#    user:
+#      name: '{{ user }}'
+#      groups: docker,root
+#      append: yes
+
+  - name: Changing permission
+    command: chmod 666 /var/run/docker.sock
+
+#  - name: Change file ownership, group and permissions
+#    ansible.builtin.file:
+#      path: /var/run/docker.sock
+#      mode: '0666'
+
+  - name: Modify User Account
+    command: usermod -aG root $USER
+
+  - name: Modify User Account
+    command: service docker restart
+    
   - name: Docker Run
     command: docker run -d -p 8080:8080 --name con ziwei0/awsdevops
