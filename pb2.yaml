@@ -12,13 +12,16 @@
     command: apt install docker* -y
 
   - name: Adding user to group
-    command: sudo usermod -aG docker ${USER}
+    command: usermod -aG docker ${USER}
 
   - name: Changing permission
-    command: sudo chmod 666 /var/run/docker.sock
+    command: chmod 666 /var/run/docker.sock
 
   - name: Modify User Account
     command: sudo usermod -G root $USER
-  
+
+  - name: Modify User Account
+    command: sudo service docker restart
+    
   - name: Docker Run
     command: docker run -d -p 8080:8080 --name con ziwei0/awsdevops
