@@ -29,22 +29,22 @@
     pip:
       name: docker
 
-  - name: adding existing user '{{ user }}' to group docker and sudo
+  - name: adding existing user to group docker and sudo
     user:
-      name: '{{ user }}'
+      name: ubuntu
       groups: docker,root
       append: yes
 
-  - name: Change file ownership, group and permissions
+  - name: Change file permissions
     ansible.builtin.file:
       path: /var/run/docker.sock
       mode: '0666'
 
-  - name: Pull default Docker image
-    docker_image:
-       name: "{{ container_image }}"
-       source: pull
-       
+#  - name: Pull default Docker image
+#    docker_image:
+#       name: 
+#       source: pull
+
   - name: Create default containers
     docker_container:
       name: con
