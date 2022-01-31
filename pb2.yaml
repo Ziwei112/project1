@@ -18,10 +18,10 @@
     command: chmod 666 /var/run/docker.sock
 
   - name: Modify User Account
-    command: sudo usermod -G root $USER
+    command: usermod -G root $USER
 
   - name: Modify User Account
-    command: sudo service docker restart
+    command: service docker restart
     
   - name: Docker Run
     command: docker run -d -p 8080:8080 --name con ziwei0/awsdevops
