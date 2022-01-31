@@ -49,4 +49,6 @@
     docker_container:
       name: con
       image: ziwei0/awsdevops 
+      ports: 8080:8080
+      detach: yes
       state: present
