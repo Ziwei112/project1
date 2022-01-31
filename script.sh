@@ -6,6 +6,6 @@ if ! [ -z $IP ];
 then
     ssh -i ~/.ssh/sg-key.pem ubuntu@$IP bash < replace-container.sh
 else
-    ansible-playbook pb1.yaml -v
-    ansible-playbook -i host pb2.yaml --private-key ~/.ssh/sg-key.pem -v
+    ansible-playbook pb1.yaml
+    ansible-playbook -i host pb2.yaml --private-key ~/.ssh/sg-key.pem
 fi
